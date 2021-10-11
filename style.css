@@ -1,3 +1,52 @@
 * {
-    padding: 0
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+.top {
+    display: flex;
+    height: 80px;
+    width: 100%;
+    background-color: grey;
+}
+
+.navigation ul li {
+    margin: 0 8px;
+    display: inline-block;
+    line-height: 80px;
+}
+
+.navigation ul li a {
+    color: white;
+    font-size: 20px;
+    padding: 6px 12px;
+    text-decoration: none;
+}
+
+.navigation ul li a.active,
+.navigation ul li a:hover {
+    background: rgb(31, 91, 160);
+    border-radius: 8px;
+}
+
+.center {
+    height: 100vmax;
+    border: 10px solid rgb(31, 91, 160);
+    padding: 40px;
+}
+
+.center button {
+    margin: auto;
+    height: 60px;
+    width: 180px;
+    font-size: 18px;
+    border: 2px solid;
+    background-color: #bdd4e7;
+    background-image: linear-gradient(315deg, #bdd4e7 0%, #8693ab 74%);
+    cursor: pointer;
+}
+
+.center button:hover {
+    color: red;
 }
