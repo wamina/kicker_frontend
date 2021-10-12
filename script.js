@@ -1,5 +1,4 @@
-let data = [];
-let game = 0;
+let playersData = [];
 
 function getPlayers() {
     const Http = new XMLHttpRequest();
@@ -10,16 +9,27 @@ function getPlayers() {
     Http.onreadystatechange = (e) => {
         if (Http.responseText) {
             let response = JSON.parse(Http.responseText);
-            let bigData = response.data;
-            data = [];
-            bigData.forEach(function(element) {
-                data.push(element.attributes);
+            playersData = response.data;
+            console.log(playersData);
+            createPlayersRows();
 
-                let titleArray = element.attributes.title.split(", ");
-                element.attributes.title = titleArray;
-            });
-            console.log(data);
-            showGenre();
         }
     }
+}
+
+window.onload = function() {
+    getPlayers();
+}
+
+function createPlayersRows() {
+    console.log(playersData);
+
+    playersData.forEach(player => {
+        console.log(player);
+        var newRow = document.getElementById('playersTable').insertRow();
+
+        newRow.innerHTML = "<tr><td>" + player.attributes.name + "</td><td>" + player.attributes.standort + "</td></tr>";
+
+
+    })
 }
