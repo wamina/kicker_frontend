@@ -36,7 +36,7 @@
     padding: 40px;
 }
 
-.center button {
+.center .open-button {
     margin: auto;
     height: 60px;
     width: 180px;
@@ -47,7 +47,7 @@
     cursor: pointer;
 }
 
-.center button:hover {
+.center .open-button:hover {
     color: red;
 }
 
@@ -105,5 +105,22 @@ input[type=submit]:hover {
 form {
     font-family: arial, sans-serif;
     padding: 30px;
-    font-weight: bolder;
+    font-weight: bold;
+}
+
+select {
+    font-family: arial, sans-serif;
+    font-size: large;
+}
+
+.form-popup {
+    display: none;
+    border: 3px solid #f1f1f1;
+    width: 60%;
+}
+
+.form-container {
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
 }

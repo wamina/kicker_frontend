@@ -21,7 +21,57 @@
     </div>
 
     <div class="center">
-        <button type="button">Kickerrunde starten!</button>
+        <div class="buttonbox"><button class="open-button" onclick="openForm()">Kickerrunde starten!</button></div>
+        <div class="form-popup" id="newGame">
+            <form class="form-container">
+                <h3>Neue Kickerrunde</h3>
+                <h4>Team 1</h4>
+                <div id="container1"></div>
+                <label for="position"><b>Position Spieler 1</b></label>
+                <select id="playerPos" name="playerPos">
+                    <option value="vorne">Vorne</option>
+                    <option value="hinten">Hinten</option>
+                </select>
+                <div id="container2"></div>
+                <label for="position"><b>Position Spieler 2</b></label>
+                <select id="playerPos" name="playerPos">
+                    <option value="vorne">Vorne</option>
+                    <option value="hinten">Hinten</option>
+                </select>
+                <h4>Team 2</h4>
+                <div id="container3"></div>
+                <label for="position"><b>Position Spieler 3</b></label>
+                <select id="playerPos" name="playerPos">
+                    <option value="vorne">Vorne</option>
+                    <option value="hinten">Hinten</option>
+                </select>
+                <div id="container4"></div>
+                <label for="position"><b>Position Spieler 4</b></label>
+                <select id="playerPos" name="playerPos">
+                    <option value="vorne">Vorne</option>
+                    <option value="hinten">Hinten</option>
+                </select>
+
+                <label for="standort">Austragungsort</label><br>
+                <select id="standort" name="standort">
+                    <option value="ber">Berlin</option>
+                    <option value="muc">München</option>
+                    <option value="wue">Würzburg</option>
+                </select>
+                <!-- <label for="mode">Modus:</label><br>
+                <select id="mode" name="mode">
+                    <option value="1">OneMatch</option>
+                    <option value="3">BestOf3</option>
+                    <option value="5">BestOf5</option>
+                </select> -->
+
+                <label for="winner">Gewinner:</label><br>
+                <select id="winner" name="winner">
+                    <option value="team1">Team 1</option>
+                    <option value="team2">Team 2</option>
+                </select>
+            </form>
+        </div>
     </div>
 </body>
 
