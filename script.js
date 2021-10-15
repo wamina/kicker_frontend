@@ -11,7 +11,7 @@ function getPlayers() {
         if (Http.responseText && playersData.length === 0) {
             let response = JSON.parse(Http.responseText);
             playersData = response.data;
-            console.log(playersData);
+            // console.log(playersData);
             if (window.location.pathname === "/players.html") {
                 createPlayersRows();
             }
@@ -37,7 +37,7 @@ function getGames() {
         if (Http.responseText && gamesData.length === 0) {
             let response = JSON.parse(Http.responseText);
             gamesData = response.data;
-            console.log(gamesData);
+            // console.log(gamesData);
             if (window.location.pathname === "/games.html") {
                 createGamesRows();
             }
@@ -46,13 +46,16 @@ function getGames() {
 }
 
 function postGame(params) {
+
     const Http = new XMLHttpRequest();
     const url = 'http://localhost:8000/games/';
     var paramsString = JSON.stringify(params);
-    Http.open("POST", url);
+    Http.open("POST", url, true);
 
-    Http.setRequestHeader('Content-type', 'application/json');
+    Http.setRequestHeader('Content-Type', 'application/vnd.api+json');
+    console.log(Http);
     Http.send(paramsString);
+
     Http.onreadystatechange = function() {
         if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
             alert(Http.responseText);
@@ -66,10 +69,10 @@ window.onload = function() {
 }
 
 function createPlayersRows() {
-    console.log(playersData);
+    // console.log(playersData);
 
     playersData.forEach(player => {
-        console.log(player);
+        // console.log(player);
         var newRow = document.getElementById('playersTable').insertRow();
 
         newRow.innerHTML = "<tr><td>" + player.attributes.name + "</td><td>" + player.attributes.standort + "</td></tr>";
@@ -79,10 +82,10 @@ function createPlayersRows() {
 }
 
 function createGamesRows() {
-    console.log(gamesData);
+    // console.log(gamesData);
 
     gamesData.forEach(game => {
-        console.log(game);
+        // console.log(game);
         var newRow = document.getElementById('gamesTable').insertRow();
 
         newRow.innerHTML = "<tr><td>" + game.attributes.standort + "</td><td>" + game.attributes.datetime + "</td><td>" + game.attributes.player1 + "</td><td>" + game.attributes.posP1 + "</td><td>" + game.attributes.player2 + "</td><td>" + game.attributes.posP2 + "</td><td>" + game.attributes.player3 + "</td><td>" + game.attributes.posP3 + "</td><td>" + game.attributes.player4 + "</td><td>" + game.attributes.posP4 + "</td><td>" + game.attributes.winner1 + "</td><td>" + game.attributes.winner2 + "</td></tr>";
@@ -101,7 +104,7 @@ function closeForm() {
 
 
 function createPlayersDropdown1() {
-    console.log(playersData);
+    // console.log(playersData);
 
 
     var select = document.createElement("select");
@@ -111,7 +114,7 @@ function createPlayersDropdown1() {
 
 
     playersData.forEach(player => {
-        console.log(player);
+        // console.log(player);
 
         var option = document.createElement("option");
         option.value = player.attributes.name;
@@ -127,7 +130,7 @@ function createPlayersDropdown1() {
 }
 
 function createPlayersDropdown2() {
-    console.log(playersData);
+    // console.log(playersData);
 
 
     var select = document.createElement("select");
@@ -137,7 +140,7 @@ function createPlayersDropdown2() {
 
 
     playersData.forEach(player => {
-        console.log(player);
+        // console.log(player);
 
         var option = document.createElement("option");
         option.value = player.attributes.name;
@@ -153,7 +156,7 @@ function createPlayersDropdown2() {
 }
 
 function createPlayersDropdown3() {
-    console.log(playersData);
+    // console.log(playersData);
 
 
     var select = document.createElement("select");
@@ -163,7 +166,7 @@ function createPlayersDropdown3() {
 
 
     playersData.forEach(player => {
-        console.log(player);
+        // console.log(player);
 
         var option = document.createElement("option");
         option.value = player.attributes.name;
@@ -179,7 +182,7 @@ function createPlayersDropdown3() {
 }
 
 function createPlayersDropdown4() {
-    console.log(playersData);
+    // console.log(playersData);
 
 
     var select = document.createElement("select");
@@ -189,7 +192,7 @@ function createPlayersDropdown4() {
 
 
     playersData.forEach(player => {
-        console.log(player);
+        // console.log(player);
 
         var option = document.createElement("option");
         option.value = player.attributes.name;
@@ -216,7 +219,7 @@ function saveValues() {
 
     var p4 = document.getElementById("player4");
     var valuep4 = p4.options[p4.selectedIndex].value;
-    console.log(valuep4);
+    // console.log(valuep4);
 
     var pos1 = document.getElementById("playerPos1");
     var valuepos1 = pos1.options[pos1.selectedIndex].value;
@@ -229,11 +232,11 @@ function saveValues() {
 
     var pos4 = document.getElementById("playerPos4");
     var valuepos4 = pos4.options[pos4.selectedIndex].value;
-    console.log(valuepos4);
+    // console.log(valuepos4);
 
     var ort = document.getElementById("standort");
     var valueort = ort.options[ort.selectedIndex].value;
-    console.log(valueort);
+    // console.log(valueort);
 
     var winner = document.getElementById("winner");
     var valuewinner = winner.options[winner.selectedIndex].value;
@@ -241,32 +244,37 @@ function saveValues() {
     var winner1 = "";
     var winner2 = "";
     if (valuewinner === "team1") {
-        console.log(valuewinner);
+        // console.log(valuewinner);
         winner1 = valuep1;
         winner2 = valuep2;
     }
     if (valuewinner === "team2") {
-        console.log(valuewinner);
+        // console.log(valuewinner);
         winner1 = valuep3;
         winner2 = valuep4;
     }
 
     var datetime = new Date().toLocaleString();
-    console.log(datetime);
+    // console.log(datetime);
 
     var game = {
-        "standort": valueort,
-        "datetime": datetime,
-        "player1": valuep1,
-        "posP1": valuepos1,
-        "player2": valuep2,
-        "posP2": valuepos2,
-        "player3": valuep3,
-        "posP3": valuepos3,
-        "player4": valuep4,
-        "posP4": valuepos4,
-        "winner1": winner1,
-        "winner2": winner2
+        "data": {
+            "type": "Game",
+            "attributes": {
+                "standort": valueort,
+                "datetime": datetime,
+                "player1": valuep1,
+                "posP1": valuepos1,
+                "player2": valuep2,
+                "posP2": valuepos2,
+                "player3": valuep3,
+                "posP3": valuepos3,
+                "player4": valuep4,
+                "posP4": valuepos4,
+                "winner1": winner1,
+                "winner2": winner2
+            }
+        }
     }
     postGame(game);
 }
