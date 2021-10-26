@@ -2,9 +2,10 @@
     padding: 0;
     margin: 0;
     border: 0;
+    font-family: 'Open Sans', sans-serif;
 }
 
-.top {
+.navigation {
     display: flex;
     height: 80px;
     width: 100%;
@@ -30,13 +31,13 @@
     border-radius: 8px;
 }
 
-.center {
+.gamebox {
     height: 100vmax;
     border: 10px solid rgb(31, 91, 160);
     padding: 40px;
 }
 
-.center .open-button {
+.gamebox .open-button {
     margin: auto;
     height: 60px;
     width: 180px;
@@ -47,12 +48,109 @@
     cursor: pointer;
 }
 
-.center .open-button:hover {
+.gamebox .open-button:hover {
     color: red;
 }
 
+.form-popup {
+    display: none;
+    border: 3px solid #f1f1f1;
+    width: 1000px;
+    height: 800px;
+    margin-top: 20px;
+}
+
+.form-container {
+    padding: 10px;
+    background-color: white;
+}
+
+.choicebox {
+    float: left;
+    width: 400px;
+}
+
+.playerbox {
+    margin-top: 20px;
+}
+
+.select {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.select select {
+    display: inline-block;
+    width: 100%;
+    cursor: pointer;
+    padding: 7px 21px;
+    outline: 0;
+    border: 1px dotted #000000;
+    border-radius: 8px;
+    background: #e6e6e6;
+    color: #7b7b7b;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.select select::-ms-expand {
+    display: none;
+}
+
+.select select:hover,
+.select select:focus {
+    color: #000000;
+    background: #cccccc;
+}
+
+.select select:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.select_arrow {
+    position: absolute;
+    top: 19px;
+    right: 15px;
+    pointer-events: none;
+    border-style: solid;
+    border-width: 8px 5px 0px 5px;
+    border-color: #7b7b7b transparent transparent transparent;
+}
+
+.select select:hover~.select_arrow,
+.select select:focus~.select_arrow {
+    border-top-color: #000000;
+}
+
+.select select:disabled~.select_arrow {
+    border-top-color: #cccccc;
+}
+
+.p-20 {
+    padding: 15px 20px;
+}
+
+.w-400 {
+    width: 400px;
+}
+
+.savebtn {
+    margin-left: 20px;
+    background-color: #bdd4e7;
+    background-image: linear-gradient(315deg, #bdd4e7 0%, #8693ab 74%);
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 6px 24px;
+    border-radius: 6px;
+    border: 1px solid #dcdcdc;
+}
+
 table {
-    font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
 }
@@ -70,14 +168,13 @@ tr:nth-child(even) {
 
 input[type=text],
 select {
-    width: 30%;
+    width: 600px;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 8px;
     box-sizing: border-box;
-    font-family: arial, sans-serif;
 }
 
 input[type=text]:focus {
@@ -93,7 +190,6 @@ input[type=submit] {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-family: arial, sans-serif;
 }
 
 input[type=submit]:hover {
@@ -102,25 +198,9 @@ input[type=submit]:hover {
     cursor: pointer;
 }
 
-form {
-    font-family: arial, sans-serif;
+.newProfile {
+    border: 1px solid;
     padding: 30px;
-    font-weight: bold;
-}
-
-select {
-    font-family: arial, sans-serif;
-    font-size: large;
-}
-
-.form-popup {
-    display: none;
-    border: 3px solid #f1f1f1;
-    width: 60%;
-}
-
-.form-container {
-    max-width: 300px;
-    padding: 10px;
-    background-color: white;
+    width: 600px;
+    margin: 8px;
 }

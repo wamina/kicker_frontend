@@ -6,6 +6,9 @@
     <title>Spielerprofile</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+    </style>
 </head>
 
 <body>
@@ -29,15 +32,23 @@
 
 
     <form action="http://127.0.0.1:8000/players/" method="POST">
-        <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name" value="Max Mustermann"><br>
-        <label for="standort">Standort:</label><br>
-        <select id="standort" name="standort">
-            <option value="ber">Berlin</option>
-            <option value="muc">München</option>
-            <option value="wue">Würzburg</option>
-        </select>
-        <input type="submit" value="Submit">
+        <div class="newProfile">
+            <label for="name">Profil anlegen:</label><br>
+            <input type="text" id="name" name="name" value="Max Mustermann"><br>
+
+            <label for="standort">Standort:</label><br>
+            <div class="select">
+                <select id="standort" name="standort">
+                <option value="Berlin">Berlin</option>
+                <option value="München">München</option>
+                <option value="Würzburg">Würzburg</option>
+            </select>
+                <div class="select_arrow"></div>
+            </div>
+        </div>
+        <div class="p-20">
+            <input type="submit" value="Submit">
+        </div>
     </form>
 
 </body>

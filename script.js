@@ -11,7 +11,6 @@ function getPlayers() {
         if (Http.responseText && playersData.length === 0) {
             let response = JSON.parse(Http.responseText);
             playersData = response.data;
-            // console.log(playersData);
             if (window.location.pathname === "/players.html") {
                 createPlayersRows();
             }
@@ -37,7 +36,6 @@ function getGames() {
         if (Http.responseText && gamesData.length === 0) {
             let response = JSON.parse(Http.responseText);
             gamesData = response.data;
-            // console.log(gamesData);
             if (window.location.pathname === "/games.html") {
                 createGamesRows();
             }
@@ -53,7 +51,6 @@ function postGame(params) {
     Http.open("POST", url, true);
 
     Http.setRequestHeader('Content-Type', 'application/vnd.api+json');
-    console.log(Http);
     Http.send(paramsString);
 
     Http.onreadystatechange = function() {
@@ -69,10 +66,8 @@ window.onload = function() {
 }
 
 function createPlayersRows() {
-    // console.log(playersData);
 
     playersData.forEach(player => {
-        // console.log(player);
         var newRow = document.getElementById('playersTable').insertRow();
 
         newRow.innerHTML = "<tr><td>" + player.attributes.name + "</td><td>" + player.attributes.standort + "</td></tr>";
@@ -82,10 +77,8 @@ function createPlayersRows() {
 }
 
 function createGamesRows() {
-    // console.log(gamesData);
 
     gamesData.forEach(game => {
-        // console.log(game);
         var newRow = document.getElementById('gamesTable').insertRow();
 
         newRow.innerHTML = "<tr><td>" + game.attributes.standort + "</td><td>" + game.attributes.datetime + "</td><td>" + game.attributes.player1 + "</td><td>" + game.attributes.posP1 + "</td><td>" + game.attributes.player2 + "</td><td>" + game.attributes.posP2 + "</td><td>" + game.attributes.player3 + "</td><td>" + game.attributes.posP3 + "</td><td>" + game.attributes.player4 + "</td><td>" + game.attributes.posP4 + "</td><td>" + game.attributes.winner1 + "</td><td>" + game.attributes.winner2 + "</td></tr>";
@@ -104,17 +97,12 @@ function closeForm() {
 
 
 function createPlayersDropdown1() {
-    // console.log(playersData);
-
 
     var select = document.createElement("select");
     select.name = "Spieler 1";
     select.id = "player1"
 
-
-
     playersData.forEach(player => {
-        // console.log(player);
 
         var option = document.createElement("option");
         option.value = player.attributes.name;
@@ -126,11 +114,15 @@ function createPlayersDropdown1() {
     label.innerHTML = "Spieler 1"
     label.htmlFor = "player1";
 
+    let arrow = document.createElement("div");
+    arrow.classList.add("select_arrow");
+
+
     document.getElementById("container1").appendChild(select);
+    document.getElementById("container1").appendChild(arrow);
 }
 
 function createPlayersDropdown2() {
-    // console.log(playersData);
 
 
     var select = document.createElement("select");
@@ -140,7 +132,6 @@ function createPlayersDropdown2() {
 
 
     playersData.forEach(player => {
-        // console.log(player);
 
         var option = document.createElement("option");
         option.value = player.attributes.name;
@@ -152,12 +143,15 @@ function createPlayersDropdown2() {
     label.innerHTML = "Spieler 2"
     label.htmlFor = "player2";
 
+    let arrow = document.createElement("div");
+    arrow.classList.add("select_arrow");
+
+
     document.getElementById("container2").appendChild(select);
+    document.getElementById("container2").appendChild(arrow);
 }
 
 function createPlayersDropdown3() {
-    // console.log(playersData);
-
 
     var select = document.createElement("select");
     select.name = "Spieler 3";
@@ -166,7 +160,6 @@ function createPlayersDropdown3() {
 
 
     playersData.forEach(player => {
-        // console.log(player);
 
         var option = document.createElement("option");
         option.value = player.attributes.name;
@@ -178,11 +171,15 @@ function createPlayersDropdown3() {
     label.innerHTML = "Spieler 3"
     label.htmlFor = "player3";
 
+    let arrow = document.createElement("div");
+    arrow.classList.add("select_arrow");
+
+
     document.getElementById("container3").appendChild(select);
+    document.getElementById("container3").appendChild(arrow);
 }
 
 function createPlayersDropdown4() {
-    // console.log(playersData);
 
 
     var select = document.createElement("select");
@@ -190,9 +187,7 @@ function createPlayersDropdown4() {
     select.id = "player4"
 
 
-
     playersData.forEach(player => {
-        // console.log(player);
 
         var option = document.createElement("option");
         option.value = player.attributes.name;
@@ -204,7 +199,12 @@ function createPlayersDropdown4() {
     label.innerHTML = "Spieler 4"
     label.htmlFor = "player4";
 
+    let arrow = document.createElement("div");
+    arrow.classList.add("select_arrow");
+
+
     document.getElementById("container4").appendChild(select);
+    document.getElementById("container4").appendChild(arrow);
 }
 
 function saveValues() {
@@ -219,7 +219,6 @@ function saveValues() {
 
     var p4 = document.getElementById("player4");
     var valuep4 = p4.options[p4.selectedIndex].value;
-    // console.log(valuep4);
 
     var pos1 = document.getElementById("playerPos1");
     var valuepos1 = pos1.options[pos1.selectedIndex].value;
@@ -232,11 +231,9 @@ function saveValues() {
 
     var pos4 = document.getElementById("playerPos4");
     var valuepos4 = pos4.options[pos4.selectedIndex].value;
-    // console.log(valuepos4);
 
     var ort = document.getElementById("standort");
     var valueort = ort.options[ort.selectedIndex].value;
-    // console.log(valueort);
 
     var winner = document.getElementById("winner");
     var valuewinner = winner.options[winner.selectedIndex].value;
@@ -244,18 +241,15 @@ function saveValues() {
     var winner1 = "";
     var winner2 = "";
     if (valuewinner === "team1") {
-        // console.log(valuewinner);
         winner1 = valuep1;
         winner2 = valuep2;
     }
     if (valuewinner === "team2") {
-        // console.log(valuewinner);
         winner1 = valuep3;
         winner2 = valuep4;
     }
 
     var datetime = new Date().toLocaleString();
-    // console.log(datetime);
 
     var game = {
         "data": {
